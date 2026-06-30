@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "build:vercel": "node scripts/build-vercel.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
