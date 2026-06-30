@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/dialog";
 
 // API 基础地址 - 从环境变量读取
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://deepfind-agent.onrender.com';
 
 // 用于追踪活跃的 EventSource 连接
 const activeEventSources = new Map<string, EventSource>();
