@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(python3 -m json.tool)",
+      "Bash(ls -lt /Users/purepure/Desktop/docs/deepfind-agent/outputs/*.md)",
+      "Bash(nohup ./venv/bin/python -m uvicorn api:app --host 0.0.0.0 --port 8000)",
+      "Bash(./venv/bin/python *)",
+      "Bash(nohup /Users/purepure/Desktop/docs/deepfind-agent/venv/bin/python -m uvicorn api:app --host 0.0.0.0 --port 8000)",
+      "Bash(nohup /Users/purepure/Desktop/docs/deepfind-agent/venv/bin/python -m uvicorn api:app --host 0.0.0.0 --port 8000 --app-dir /Users/purepure/Desktop/docs/deepfind-agent)"
+    ]
+  }
+}
