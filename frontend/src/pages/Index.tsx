@@ -594,19 +594,39 @@ const ChatPage: React.FC = () => {
         activeEventSources.delete(sessionId);
       });
 
+      // 处理服务器发送的错误事件
       eventSource.addEventListener('error', (event) => {
-        const data = JSON.parse(event.data);
-        addAssistantMessage(`${t.message.error}${data.message}`);
-        updateSessionState({ status: 'error' });
-        eventSource.close();
-        activeEventSources.delete(sessionId);
+        try {
+          if (event.data) {
+            const data = JSON.parse(event.data);
+            addAssistantMessage(`${t.message.error}${data.message}`);
+          } else {
+            addAssistantMessage(t.message.error);
+          }
+          updateSessionState({ status: 'error' });
+          eventSource.close();
+          activeEventSources.delete(sessionId);
+        } catch (e) {
+          console.error('Error parsing error event:', e);
+          addAssistantMessage(t.message.error);
+          updateSessionState({ status: 'error' });
+          eventSource.close();
+          activeEventSources.delete(sessionId);
+        }
       });
 
-      eventSource.onerror = () => {
-        addAssistantMessage(t.message.connectionLost);
-        updateSessionState({ status: 'error' });
-        eventSource.close();
-        activeEventSources.delete(sessionId);
+      // 处理连接错误
+      eventSource.onerror = (error) => {
+        console.error('EventSource error:', error);
+        console.log('EventSource readyState:', eventSource.readyState);
+
+        // 只在连接真正失败时显示错误（readyState 为 CLOSED）
+        if (eventSource.readyState === EventSource.CLOSED) {
+          addAssistantMessage(t.message.connectionLost);
+          updateSessionState({ status: 'error' });
+          eventSource.close();
+          activeEventSources.delete(sessionId);
+        }
       };
 
     } catch (error) {
