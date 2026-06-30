@@ -47,11 +47,12 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "./src"),
     },
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    modules: [path.resolve(__dirname, "./src"), "node_modules"],
+    enforceExtension: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
