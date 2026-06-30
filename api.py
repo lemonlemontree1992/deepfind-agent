@@ -258,7 +258,7 @@ app = FastAPI(
 )
 
 # CORS 配置 - 从环境变量读取允许的来源
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,https://deepfind-agent.vercel.app").split(",")
 # 开发模式下允许所有来源，生产环境应配置具体域名
 CORS_ORIGINS = ["*"] if os.getenv("ENV", "development") == "development" else ALLOWED_ORIGINS
 
