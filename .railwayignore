@@ -1,0 +1,19 @@
+# Railway 构建忽略文件
+venv/
+node_modules/
+.git/
+.gitignore
+*.md
+docs/
+test/
+frontend/node_modules/
+frontend/dist/
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.env.local
